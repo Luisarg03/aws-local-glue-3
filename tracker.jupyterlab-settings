@@ -1,0 +1,15 @@
+{
+    "codeCellConfig": {
+        "fontSize": 17,
+        "lineHeight": 1.2
+    },
+        "markdownCellConfig": {
+        "fontSize": 16,
+        "lineHeight": 1.2
+    },
+        "rawCellConfig": {
+        "fontSize": 16,
+        "lineHeight": 1.2
+    },
+    "recordTiming": true
+}

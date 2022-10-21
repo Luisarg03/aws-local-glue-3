@@ -1,0 +1,30 @@
+
+services:
+  aws-glue:
+      image: amazon/aws-glue-libs:glue_libs_3.0.0_image_01
+      container_name: 'aws-local-glue'
+      environment:
+        - DISABLE_SSL="true"
+        - PYTHONPATH=/home/glue_user/workspace/
+        - AWS_ACCESS_KEY_ID=${aws_access_key_id}
+        - AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
+        - AWS_SESSION_TOKEN=${aws_session_token}
+      ports:
+      - '4040:4040'
+      - '8888:8888'
+      restart: always
+      volumes:
+        - ./jupyter_workspace:/home/glue_user/workspace/jupyter_workspace:rw ### read and write
+        - ./requirements.txt:/home/glue_user/requirements.txt:rw
+        - ./jupyter_start.sh:/home/glue_user/jupyter/jupyter_start.sh:rw
+        - ./themes.jupyterlab-settings:/home/glue_user/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings:rw
+        - ./tracker.jupyterlab-settings:/home/glue_user/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings:rw
+      command: /home/glue_user/jupyter/jupyter_start.sh
+      deploy:
+        resources:
+          limits:
+            cpus: '8'
+            memory: 8192M
+          reservations:
+            cpus: '2'
+            memory: 1024M

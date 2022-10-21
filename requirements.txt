@@ -1,0 +1,7 @@
+boto3==1.24.63
+awswrangler==2.16.1
+sqlalchemy==1.4.41
+theme-darcula
+jupyterlab-system-monitor
+jupyterlab_execute_time
+jupyterlab-drawio
