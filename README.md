@@ -10,21 +10,29 @@
 
 ## Proposito
 
-Brindar un entorno de desarrollo y pruebas de scripts en Python y Spark para el equipo de **DATA Tiendanube**
+Brindar un entorno de desarrollo de scripts en Python y Spark para el equipo **Tiimiit**
 
 ## Requisitos
-    - Docker 20.10
-    - Docker-compose 1.25
+     Docker >= 20.10
+     Docker-compose >= 1.25
 
 ## iniciando el servico
-Step-By-Step
+sobre el directorio raiz
+
+- Crear archivo de variables de entorno ( .env ) que contenga las siguientes variables.
+
+```console
+aws_access_key_id={}
+aws_secret_access_key={}
+aws_session_token={}
+```
+
+- Ejecutar el comando
+    
+```console
+docker compose up
+```
 
 ## Referencias
 [Glue-best-practices](https://docs.aws.amazon.com/prescriptive-guidance/latest/serverless-etl-aws-glue/best-practices.html)
-
 [Glue3-containers](https://aws.amazon.com/es/blogs/big-data/developing-aws-glue-etl-jobs-locally-using-a-container/)
-
-[Medium-how-to-run-glue-docker](https://zsombor-flds.medium.com/how-to-run-spark-3-glue-jobs-locally-with-docker-12cdbdf1b6bb)
-
-#### Repositorio original
-[Hiflylabs/aws-glue-spark3-docker](https://github.com/Hiflylabs/aws-glue-spark3-docker)
