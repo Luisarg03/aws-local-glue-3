@@ -10,7 +10,7 @@
 
 ## Proposito
 
-Brindar un entorno de desarrollo de scripts en Python y Spark para el equipo **Tiimiit**
+Brindar un entorno de desarrollo de scripts local en Python y PySpark.
 
 ## Requisitos
      Docker >= 20.10
