@@ -1,22 +1,26 @@
 
 services:
   aws-glue:
-      image: amazon/aws-glue-libs:glue_libs_3.0.0_image_01
+      image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01-amd64
       container_name: 'aws-local-glue'
       environment:
         - DISABLE_SSL="true"
         - PYTHONPATH=/home/glue_user/workspace/
-        - AWS_ACCESS_KEY_ID=${aws_access_key_id}
-        - AWS_SECRET_ACCESS_KEY=${aws_secret_access_key}
-        - AWS_SESSION_TOKEN=${aws_session_token}
+        - AWS_REGION=${AWS_REGION}
+        - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
       ports:
       - '4040:4040'
       - '8888:8888'
+      - '18080:18080'
+      - '8998:8998'
       restart: always
       volumes:
-        - ./jupyter_workspace:/home/glue_user/workspace/jupyter_workspace:rw ### read and write
+        - ./.aws:/home/glue_user/.aws:rw
+        - ./jupyter_workspace:/home/glue_user/workspace/jupyter_workspace:rw
         - ./requirements.txt:/home/glue_user/requirements.txt:rw
-        - ./jupyter_start.sh:/home/glue_user/jupyter/jupyter_start.sh:rw
         - ./themes.jupyterlab-settings:/home/glue_user/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings:rw
         - ./tracker.jupyterlab-settings:/home/glue_user/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings:rw
       command: /home/glue_user/jupyter/jupyter_start.sh
